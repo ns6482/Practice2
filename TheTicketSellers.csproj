@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96B5392C-36FC-4507-93CF-002FFBE73E15}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TheTicketSellers</RootNamespace>
+    <AssemblyName>TheTicketSellers</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\Domain\IDto.cs" />
+    <Compile Include="Dto\PaymentDto.cs" />
+    <Compile Include="Ioc\IocSetup.cs" />
+    <Compile Include="Services\Implementation\PaymentServiceMediator.cs" />
+    <Compile Include="Infrastructure\Service\PaymentServiceMediatorBillResult.cs" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Dto\OrderDto.cs" />
+    <Compile Include="Domain\OrderAggregate\CreditCard.cs" />
+    <Compile Include="Domain\Common\EmailAddress.cs" />
+    <Compile Include="Infrastructure\Domain\Entity.cs" />
+    <Compile Include="Domain\OrderAggregate\Event.cs" />
+    <Compile Include="Domain\Common\Person.cs" />
+    <Compile Include="Infrastructure\Domain\IEntity.cs" />
+    <Compile Include="Infrastructure\Domain\DomainEvents.cs" />
+    <Compile Include="Infrastructure\Domain\IDomainEvent.cs" />
+    <Compile Include="Services\Contracts\IPaymentService.cs" />
+    <Compile Include="Services\Contracts\IPaymentServiceServiceChannel.cs" />
+    <Compile Include="Infrastructure\Service\IResult.cs" />
+    <Compile Include="Infrastructure\Service\OrderResult.cs" />
+    <Compile Include="Infrastructure\Service\ServiceResult.cs" />
+    <Compile Include="Infrastructure\Service\Status.cs" />
+    <Compile Include="Services\EventHandlers\DataOrderHandler.cs" />
+    <Compile Include="Infrastructure\Domain\DomainAggregate.cs" />
+    <Compile Include="Infrastructure\Domain\IDomainAggregate.cs" />
+    <Compile Include="Infrastructure\Domain\IDomainHandler.cs" />
+    <Compile Include="Services\Contracts\IOrderService.cs" />
+    <Compile Include="Domain\OrderAggregate\Order.cs" />
+    <Compile Include="Events\OrderEvent.cs" />
+    <Compile Include="Services\Contracts\IPaymentServiceMediator.cs" />
+    <Compile Include="Services\Implementation\OrderService.cs" />
+    <Compile Include="Services\EventHandlers\PaymentOrderHandler.cs" />
+    <Compile Include="Services\AntiCorruption\PaymentService.cs" />
+    <Compile Include="Domain\OrderAggregate\User.cs" />
+    <Compile Include="Domain\OrderAggregate\Customer.cs" />
+    <Compile Include="Database\OrderDataAccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
